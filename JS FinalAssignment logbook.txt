@@ -1,0 +1,51 @@
+day 1:
+todo:
+-look up how to initialize an array of images with JavaScript
+-look up memory games and how other people structure them
+-get started with some variables
+-attempt to switch which side of the card is displayed with a eventlistener for click
+
+Found a good guide on geeksforgeeks that showed how to initialize an array with JavaScript as well as using .createElement and .appendChild. This was incredibly useful.
+Geeksforgeeks also had a sort of memory game guide which was very helpful too, although differently structured, so it took a while to be able to translate the features into this code.
+Got going with the array, used a foreach loop to create the elements i needed to display the cards properly.
+Had a few issues making sure that the element was created within the correct div, it was also quite tricky searching for exactly what i needed within someone elses html code.
+After a bit of trial and error, i think i managed to get the correct classes to the html elements.
+Kept getting an error that a favicon wasnt being found, thought that it was something i had done by mistake and after quite a lot of time looking for the problem, it turns out that it was in the html, it was missing a favicon, fixed that.
+Got started on trying to flip cards, however I was getting tired so after managing to flip just one card and nothing working, i decided to call it quits for the day.
+
+day 2:
+todo: 
+-figure out how to be able to flip cards, target the li element and just hide the whole qmark div?
+-add a way to shuffle the array so its randomized each time
+-start with some game logic, checks for if image src matches on the clicked element
+-win condition, reset button?
+
+I started out wanting to target the img tag itself to hide or show the element on click, using display none and display block. However when doing so, it didnt do anything.
+I decided to check if it worked at all, so i used console.log("hi"); inside the click eventlistener to get some sort of feedback whether it was working or not.
+It was working! but the div is in the way, decided to target the whole divs instead which made things work. However i only seem to be able to make it work once.
+Turns out i need it inside the foreach loop of course! to make sure that every single element that is created gets the same eventlistener.
+Things work now!
+Shuffler i kind of ended up just taking from another memory game, it was called the Fisher-Yates algorithm and that works perfectly.
+Game logic i got help from looking around at other memory games, needed new variables, specifically two new arrays to store the cards that are clicked so that the img src can be compared between the two of them. and a matchedcards array to store the cards that have been matched. If the length of the matchedcards array is equal to the length of the image array the game should be over and you should have won. this will be the win condition.
+Reset button was a bit tricky, i figured i could just reshuffle the array and use a foreach loop to manually hide every single element again and just reset the picked cards array and the matched cards array. but it was not so simple, after quite a bit of looking around for solutions i decided to use the entire function i had made earlier for starting the game. This ended up making my code look really messy and i repeated myself a lot, but it worked. After a while i decided that this wasnt good enough and i decided to make it into a reusable function that i could just call here instead to reset, making my code a lot more compact.
+
+day 3:
+todo:
+-score tracking
+-timer
+-dropdown menu
+
+For the score tracking I did something very silly, I was overcomplicating things and ended up creating a score variable which was set to 0 at the start of the program, this was tied to the html so it could be updated and displayed. But the way i wanted to track the score initially was (matchedcards.length / 2), which is completely ridiculous. When trying to implement this so it would work i asked myself the question almost out loud "where should i make points go up" and as i did i realized that i could just check when the matchedcards array gets pushed, to just take the points variable ++, to increment it. i did not need to check matchedcards array length or anything silly like that. I found this a bit amusing.
+Score tracking is working!
+Timer was really complicated at first, but i found a good website called shecodes that helped me understand it a lot better, however the implementation of this took me quite a lot of trial and error.  i created variables for displaying the time left and the interval that it would be ticking down at, which would be 1000ms or 1s. created an if check so that if the timer reaches 0 the game ends, displays a message with alert and then resets the game. if there still was time left, then the timeLeft variable with decrement with --. this would also happen every 1000ms using setInterval.
+Some problems i ran into when trying to tie Everything together, like the reset button also resetting the timer and clearing the interval it was ticking at, was i failed to use clearInterval properly and now the timer was ticking down twice every second instead, making the game very difficult, needed to use clearInterval in the right spot.
+Creating a dropdown menu was fairly simple since i only used html select and options tags to create it. then i used my timeleft variable to parse the int value inside to fetch that timer value, so that the player can select 30, 60 or 90 seconds of playtime. 
+
+Thoughts:
+This assignment was quite tricky, but a really good way of learning how to create stuff with DOM manipulation and event handling. 
+I needed to look a lot at other projects and guides online since i lacked a lot of knowledge for what i can even do with javascript, but once i got going, things started rolling a lot more smoothly. Not without silly mistakes or hard to find semicolons of course.
+I feel like i have learned a lot by forcing myself into a much more difficult challenge, however I think that maybe I got started a bit too early, since we havent been going through most of what ive learned online by myself during our lessons. It would probably have been a good idea to go through the lessons first so that I have a better idea of how to approach the challenge, but I wanted to get done before christmas so i ended up forcing myself into quite deep waters immediately.
+Big fan of the appendChild and createElement, really nice to be able to add elements by looping through the array.
+I felt like this went overall pretty well and was a fun challenge, some extra potential things i could look into for this project is maybe a win and loss counter that doesnt reset, maybe more neatly structured code, my own images or perhaps selecting from a much bigger array of images but only selecting 12 of them, so that the memory game has more potential variety.
+
+
