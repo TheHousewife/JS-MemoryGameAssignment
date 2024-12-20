@@ -71,7 +71,7 @@ function createCards(imageArray, imageContainer) {
             if (flippedCards.includes(li)) return;
 
             frontViewDiv.style.display = "none";
-            backViewDiv.style.display = "block";
+            backViewDiv.style.display = "flex";
 
             flippedCards.push(li);
 
